@@ -11,7 +11,8 @@ import { Light, Dark } from "../data";
 import { Col, Container, Row } from "react-bootstrap";
 import { Spin } from "./globalStyledComponents";
 import SocialLinks from "./SocialLinks";
-
+import Lottie from 'react-lottie';
+import animationData from './lotties/digiwallet.json';
 const StyledHero = styled.header`
   position: relative;
   display: grid;
@@ -82,32 +83,25 @@ const StyledHero = styled.header`
 
 export default function Hero() {
   const { name } = useSelector(selectData);
-
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
   return (
     <StyledHero>
       <Container>
-        <Row className="align-items-center text-center">
-          <Col>
-            <h1 className="mb-3 display-3 title">{name}</h1>
-            <div className="d-flex align-items-center justify-content-center">
-              <SocialLinks />
-            </div>
-          </Col>
-          <Col className="d-none d-md-block">
-            <img
-              src={Logo}
-              alt="React Logo"
-              className="w-75 mx-auto hero-img"
-            />
-          </Col>
-        </Row>
-        <Row className="align-items-end down-container">
-          <Col className="m-4 text-center">
-            <Link to={"About"} className="link-icons">
-              <Icon icon="fa6-solid:circle-chevron-down" />
-            </Link>
-          </Col>
-        </Row>
+      <Lottie 
+	    options={defaultOptions}
+      // height={"500px"}
+       style = {{backgroundColor:"white"}}
+      />
+      <iframe src="/portfolioworks/rkc.html" width="100%" height="600px" />
+      <iframe src="/portfolioworks/rodaclub.html" width="100%" height="600px" />
+     
       </Container>
     </StyledHero>
   );
